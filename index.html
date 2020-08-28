@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+    <title>Hotels</title>
+
+    <style>
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            margin: 0;
+        }
+
+        input[type=number] {
+            max-width: 100% !important;
+        }
+
+        select {
+            height: 30px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="card bg-light text-black">
+                    <div class="card-body col-md-12 d-flex">
+                        <div class="fields">
+                            <div class="from-date col-md-2 float-left">
+                                <label for="from-date">From</label>
+                                <div class="select-date">
+                                    <select class="mdb-select colorful-select dropdown-primary"
+                                            id="from-date"
+                                            name="from"
+                                    >
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="to-date col-md-2 float-left">
+                                <label for="to-date">To</label>
+                                <div class="select-date">
+                                    <select class="mdb-select colorful-select dropdown-primary"
+                                            id="to-date"
+                                            name="to"
+                                    >
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="adults col-md-2 float-left">
+                                <label for="adults">Adults</label>
+                                <input type="number" name="adults" id="adults" min="0" value="0">
+                            </div>
+                            <div class="children col-md-2 float-left">
+                                <label for="children">Children</label>
+                                <input type="number" name="children" id="children" min="0" value="0">
+                            </div>
+                            <div class="hotel-type col-md-2 float-left">
+                                <label for="type">Type</label>
+                                <div class="select-type">
+                                    <select class="mdb-select colorful-select dropdown-primary"
+                                            id="type"
+                                            name="type"
+                                    >
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-2 float-left">
+                                <button type="submit" class="btn btn-warning btn-md submit">Find Your Bed</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="errors"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row hotels mt-5"></div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
