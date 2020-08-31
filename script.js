@@ -44,12 +44,11 @@ $(document).ready(function () {
             },
         })
             .done(function (response) {
-                for (let index = 0; index < (response.hotels).length; index++) {
-                    for (let [key, value] of Object.entries(response.hotels)) {
-                        $('.hotels').html(`<div class="col-md-12">
+                for (let [hotelKey, value] of Object.entries(response.hotels)) {
+                    $('.hotels').append(`<div class="col-md-12 mt-3">
                                                 <div class="col-md-6 float-left">
                                                     <h5 class='hotel-name font-weight-bold'>${value.name}</h5>
-                                                    <div class="rooms">
+                                                    <div class="rooms-${hotelKey}">
                                                         <div class="title font-weight-bold">Rooms</div>
                                                     </div>
                                                 </div>
@@ -60,9 +59,8 @@ $(document).ready(function () {
                                                 </div>
                                             </div>`)
 
-                        for (let [key, room] of Object.entries(value.rooms)) {
-                            $('.rooms').append(`<span>${room.name}</span><br>`)
-                        }
+                    for (let [key, room] of Object.entries(value.rooms)) {
+                        $('.rooms-' + hotelKey).append(`<span>${room.name}</span><br>`)
                     }
                 }
             })
