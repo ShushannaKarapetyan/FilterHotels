@@ -1,8 +1,10 @@
 $(document).ready(function () {
+    let domain = "http://hotels.test/";
+
     $.ajax({
         type: "GET",
         dataType: 'json',
-        url: "http://hotels.test/hotels/2/free-rooms",
+        url: domain + "all-days",
     })
         .done(function (response) {
             for (const [key, value] of Object.entries(response.data)) {
@@ -16,7 +18,7 @@ $(document).ready(function () {
     $.ajax({
         type: "GET",
         dataType: 'json',
-        url: "http://hotels.test/hotel-types",
+        url: domain + "hotel-types",
     })
         .done(function (response) {
             for (const [key, value] of Object.entries(response.data)) {
@@ -34,7 +36,7 @@ $(document).ready(function () {
         $.ajax({
             type: "GET",
             dataType: 'json',
-            url: "http://hotels.test/filtered-hotels",
+            url: domain + "filtered-hotels",
             data: {
                 'from': $("#from-date").val(),
                 'to': $("#to-date").val(),
@@ -44,25 +46,7 @@ $(document).ready(function () {
             },
         })
             .done(function (response) {
-                for (let [hotelKey, value] of Object.entries(response.hotels)) {
-                    $('.hotels').append(`<div class="col-md-12 mt-3">
-                                                <div class="col-md-6 float-left">
-                                                    <h5 class='hotel-name font-weight-bold'>${value.name}</h5>
-                                                    <div class="rooms-${hotelKey}">
-                                                        <div class="title font-weight-bold">Rooms</div>
-                                                    </div>
-                                                </div>
-                                       
-                                                <div class="col-md-6 float-right">
-                                                    <div class="email">E-mail: ${value.email}</div>
-                                                    <div class="phone">Tel: ${value.phone}</div>
-                                                </div>
-                                            </div>`)
-
-                    for (let [key, room] of Object.entries(value.rooms)) {
-                        $('.rooms-' + hotelKey).append(`<span>${room.name}</span><br>`)
-                    }
-                }
+                $('.hotels').append(response.content)
             })
             .fail(function (error) {
                 for (let [key, value] of Object.entries(error.responseJSON.errors)) {
